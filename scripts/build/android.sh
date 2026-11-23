@@ -14,6 +14,7 @@ fail() { echo "::error::Android build failed ($FW): see the encrypted build log"
 npm_install() { [ -f package.json ] && { q npm ci || q npm install; }; return 0; }
 apk() { find "${1:-.}" -path "*build/outputs/apk/*$2*/*.apk" -not -name '*androidTest*' -not -name '*unaligned*' | head -1; }
 
+[ -f "$ROOT/scripts/build/pre_build.sh" ] && { q bash "$ROOT/scripts/build/pre_build.sh" || fail; }
 . "$ROOT/scripts/build/args.sh"; BUILD_ARGV=()
 if [ -n "${BUILD_COMMAND:-}" ]; then
   [ -n "${BUILD_ARGS:-}${BUILD_ARGS_SECRET:-}" ] && echo "::warning::build_args is ignored with a custom android_build command"
