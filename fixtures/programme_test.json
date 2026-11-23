@@ -1,0 +1,6 @@
+{"schema":"virtus_training_plans","version":1,"plans":[{"id":"test_fullbody","name":"Test Full Body","steps":[
+{"id":"s1","title":"Échauffement","seconds":30,"type":1,"autoNext":true},
+{"id":"s2","title":"Pompes x12","seconds":0,"type":0,"autoNext":false},
+{"id":"s3","title":"Repos","seconds":20,"type":1,"autoNext":true},
+{"id":"s4","title":"Squats x15","seconds":0,"type":0,"autoNext":false},
+{"id":"s5","title":"Gainage","seconds":30,"type":1,"autoNext":true}]}]}
