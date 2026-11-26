@@ -32,22 +32,19 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 - A file `programme_test.json` is in the phone's Download folder.
 
 ## Mission (in this order: newest features first)
-1. Sign in with « Continuer sans compte » if the login screen shows. Glance at the home tab.
-2. Starter programs. « Séances » → ⋮ → « Programmes de départ »: is the list clear (duration,
-   equipment)? Add « Push » (or any weight-training one). Back: is it in your plans?
-3. Session tracking. Start that added plan. On an exercise step to validate (reps), are there
-   reps / weight inputs, pre-filled or empty? Enter reps and a weight (tap outside the field to
-   close the keyboard: is « Étape suivante » still visible?). Go to the next step, then one more.
-4. Resume. Force-stop the app (`adb shell am force-stop <package>`), launch it again from the
-   launcher (never clear data), open « Séances »: « Séance en cours » card? « Reprendre »: right
-   step? Then go to the last step and finish the session (validate until the end).
-5. History. ⋮ → « Historique »: is the finished session listed? Open it: are your sets shown?
-   Tab « Progression »: open the exercise: is a chart or « Pas encore assez de données » shown?
-6. Exercise library. Open a plan in the editor → edit a timer step → dumbbell icon → search
-   « pompes » → open a result → « Choisir cet exercice »: does the step switch to « Étape à
-   valider » with a short hint? Save.
-7. Custom exercise: in the picker, search « zorblax » → « Créer… » → save: is it linked?
-8. Count your plans: any duplicates or missing ones after the restart of step 4?
+1. Sign in with « Continuer sans compte » if the login screen shows.
+2. Exercise library. « Séances » → ⋮ → paste import → « Insérer un exemple » → import. Open
+   that plan in the editor → edit a TIMER step → dumbbell icon → search « pompes » → open a
+   result → « Choisir cet exercice »: does the step switch to « Étape à valider » with a short
+   hint under the « Lié » chip? Save the step and the plan.
+3. Custom exercise: edit another step → dumbbell icon → search « zorblax » → « Créer… » →
+   save: is it linked? Open its sheet (i): « Modifier » and « Supprimer » shown, no licence line?
+4. Start a session on that plan, go to the step linked to « pompes »: reps / weight inputs?
+   Type reps, then a weight: both kept? Close the session with the « × ».
+5. Home tab: does the top card now say « Reprendre — … (étape X/Y) »? Do not tap it.
+6. « Séances » → ⋮ → « Historique »: clear empty state (no finished session yet)? Tap the
+   import icon in its app bar: is the Strong / Hevy help clear? Cancel (no file to pick).
+7. ⋮ → « Programmes de départ »: list readable? Back.
 
 ## Final report
 Write both files with the Write tool.
