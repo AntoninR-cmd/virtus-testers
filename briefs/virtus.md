@@ -43,7 +43,9 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 5. Open the help sheet (⋮ menu → help / « importer depuis ChatGPT »): is all of it
    readable, buttons included? Then, if budget remains: the "Exemple" button of the paste
    import, and an invalid JSON (e.g. `{"plans":[{}]}`): is the error message clear?
-6. Glance at the home tab (first tab): is it clear what to do?
+6. Glance at the home tab (first tab): is it clear what to do? Try « Reprendre » if shown.
+7. Export one plan (⋮ on the plan card → export): does the Android share sheet open?
+   Press Back to close it. Then open ⋮ → « Générer avec une IA »: is the page clear?
 
 ## Final report
 Write both files with the Write tool.
