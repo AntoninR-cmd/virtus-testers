@@ -37,10 +37,13 @@ moments in the WORKOUT features, and report them precisely and verifiably.
    Download). If file import fails, note it, then try the paste import with this short JSON:
    `{"plans":[{"id":"p2","name":"Test court","steps":[{"id":"a","title":"Pompes","seconds":0,"type":0,"autoNext":false},{"id":"b","title":"Repos","seconds":10,"type":1,"autoNext":true}]}]}`
 3. Open the imported plan in the editor: add one step, change one duration, save.
-   Leave the screen, come back, and check the change was saved.
+   Leave the screen, come back, and check the change was saved. Then open the editor
+   again and close it with the « × » at the top right: it must close.
 4. Start the session and go through at least three steps (wait out one timer with `sleep`).
-5. If budget remains: the "Exemple" button of the paste import, and an invalid JSON
-   (e.g. `{"plans":[{}]}`): is the error message clear?
+5. Open the help sheet (⋮ menu → help / « importer depuis ChatGPT »): is all of it
+   readable, buttons included? Then, if budget remains: the "Exemple" button of the paste
+   import, and an invalid JSON (e.g. `{"plans":[{}]}`): is the error message clear?
+6. Glance at the home tab (first tab): is it clear what to do?
 
 ## Final report
 Write both files with the Write tool.
