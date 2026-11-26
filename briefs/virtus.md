@@ -6,7 +6,7 @@ in the phone's language (French for most personas). Goal: find bugs, crashes and
 moments in the WORKOUT features, and report them precisely and verifiably.
 
 ## Token budget (strict)
-- Budget: about 30 actions, then write the report. Stop earlier if the app crashes twice,
+- Budget: about 35 actions, then write the report. Stop earlier if the app crashes twice,
   or after 3 different attempts on the same blocked step.
 - See the screen: `python3 scripts/android/screen.py results/<persona> <NN>` (NN = 01, 02...).
   It prints the list of visible elements with tap centres and saves a PNG.
@@ -33,23 +33,23 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 
 ## Mission (in this order: newest features first)
 1. Sign in with « Continuer sans compte ». Glance at the home tab: is it clear what to do?
-2. Bottom bar « Séances » → ⋮ menu (top right) → « Générer avec une IA »: is the page clear?
-   Copy the prompt, go back.
-3. ⋮ → paste import: tap « Insérer un exemple », import it. Is the summary clear?
+2. Exercise library. Bottom bar « Séances » → open any plan in the editor → edit one step →
+   tap the dumbbell icon next to the title. Search « pompes »: are results relevant? Try one
+   equipment filter chip. Tap a result: the sheet shows muscles, a « Voir une vidéo » button
+   (do NOT tap it) and a source/licence line. Tap « Choisir cet exercice »: the step title
+   changes and a « Lié : … » chip appears. Save the step and the plan.
+3. Custom exercise. Edit another step → dumbbell icon → search a made-up word like « zorblax »:
+   is « Créer un exercice » offered? Create it (name only is enough), save: is it linked?
+4. Session tracking. Start a session on that plan. On the step linked to an exercise, are there
+   reps / weight inputs? Enter a value, go to the next step, then one more.
+5. Resume. Force-stop the app (`adb shell am force-stop <package>`), launch it again from the
+   launcher (never clear data), open « Séances »: is a « Séance en cours » card shown? Tap
+   « Reprendre »: does it continue at the right step? Then leave the session.
+6. Account page (top-right icon on the home tab) → « Crédits et licences »: readable? Back.
+7. « Séances » → ⋮ → « Générer avec une IA »: is the page clear? Copy the prompt, go back.
+8. ⋮ → paste import: tap « Insérer un exemple », import it. Is the summary clear?
    Then paste an invalid JSON `{"plans":[{}]}` and import: is the error message clear?
-4. ⋮ → « Importer un entraînement »: pick `programme_test.json` in Download.
-5. Open the imported plan in the editor. Add one step of type « Étape à valider » (the timer
-   fields should stay visible but greyed), then one timer step; change one duration; save.
-   Reopen the editor and close it with the « × » at the top right: it must close.
-6. Export one plan (⋮ on the plan card → export): does the Android share sheet open?
-   Press Back to close it.
-7. Start a session and go through at least three steps (wait out one timer with `sleep`).
-8. Restart the app (`adb shell am force-stop <package>` then launch it again from the
-   launcher; never clear data): are all your plans still there, with your changes, and
-   no duplicates? Count them.
-9. Account page (top-right icon on the home tab): « Sauvegarder maintenant », then
-   « Restaurer maintenant ». Do both show a success message (no error)? Are the plans
-   still all there afterwards?
+9. Count your plans: any duplicates or missing ones after the restart of step 5?
 
 ## Final report
 Write both files with the Write tool.
