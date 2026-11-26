@@ -6,7 +6,7 @@ in the phone's language (French for most personas). Goal: find bugs, crashes and
 moments in the WORKOUT features, and report them precisely and verifiably.
 
 ## Token budget (strict)
-- Budget: about 20 actions, then write the report. Stop earlier if the app crashes twice,
+- Budget: about 30 actions, then write the report. Stop earlier if the app crashes twice,
   or after 3 different attempts on the same blocked step.
 - See the screen: `python3 scripts/android/screen.py results/<persona> <NN>` (NN = 01, 02...).
   It prints the list of visible elements with tap centres and saves a PNG.
@@ -31,21 +31,19 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 - The ads are blocked on purpose: an empty ad space or an ad error is not a bug.
 - A file `programme_test.json` is in the phone's Download folder.
 
-## Mission (in this order)
-1. Reach the training tab (bottom bar: « Séances »).
-2. Import the program from the file `programme_test.json` (⋮ menu at the top right → « Importer un entraînement », pick the file in
-   Download). If file import fails, note it, then try the paste import with this short JSON:
-   `{"plans":[{"id":"p2","name":"Test court","steps":[{"id":"a","title":"Pompes","seconds":0,"type":0,"autoNext":false},{"id":"b","title":"Repos","seconds":10,"type":1,"autoNext":true}]}]}`
-3. Open the imported plan in the editor: add one step, change one duration, save.
-   Leave the screen, come back, and check the change was saved. Then open the editor
-   again and close it with the « × » at the top right: it must close.
-4. Start the session and go through at least three steps (wait out one timer with `sleep`).
-5. Open the help sheet (⋮ menu → help / « importer depuis ChatGPT »): is all of it
-   readable, buttons included? Then, if budget remains: the "Exemple" button of the paste
-   import, and an invalid JSON (e.g. `{"plans":[{}]}`): is the error message clear?
-6. Glance at the home tab (first tab): is it clear what to do? Try « Reprendre » if shown.
-7. Export one plan (⋮ on the plan card → export): does the Android share sheet open?
-   Press Back to close it. Then open ⋮ → « Générer avec une IA »: is the page clear?
+## Mission (in this order: newest features first)
+1. Sign in with « Continuer sans compte ». Glance at the home tab: is it clear what to do?
+2. Bottom bar « Séances » → ⋮ menu (top right) → « Générer avec une IA »: is the page clear?
+   Copy the prompt, go back.
+3. ⋮ → paste import: tap « Insérer un exemple », import it. Is the summary clear?
+   Then paste an invalid JSON `{"plans":[{}]}` and import: is the error message clear?
+4. ⋮ → « Importer un entraînement »: pick `programme_test.json` in Download.
+5. Open the imported plan in the editor. Add one step of type « Étape à valider » (the timer
+   fields should stay visible but greyed), then one timer step; change one duration; save.
+   Reopen the editor and close it with the « × » at the top right: it must close.
+6. Export one plan (⋮ on the plan card → export): does the Android share sheet open?
+   Press Back to close it.
+7. Start a session and go through at least three steps (wait out one timer with `sleep`).
 
 ## Final report
 Write both files with the Write tool.
