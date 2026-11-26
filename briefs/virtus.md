@@ -25,6 +25,9 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 - Never clear app data or reinstall. Never use a real e-mail: use your persona's `email`.
 - Sign-in and onboarding are NOT the target: get through them as fast as possible
   (skip, anonymous or "later" options first). Report only a blocker there.
+- On the sign-in screen, tap **« Continuer sans compte »** (below the white card; scroll
+  down if needed). Do NOT create an account: the test addresses already have accounts
+  from earlier runs. If that button fails, report it as a blocker with its message.
 - The ads are blocked on purpose: an empty ad space or an ad error is not a bug.
 - A file `programme_test.json` is in the phone's Download folder.
 
