@@ -32,8 +32,8 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 - A file `programme_test.json` is in the phone's Download folder.
 
 ## Mission (in this order)
-1. Reach the training tab (Entraînement).
-2. Import the program from the file `programme_test.json` (import button, pick the file in
+1. Reach the training tab (bottom bar: « Séances »).
+2. Import the program from the file `programme_test.json` (⋮ menu at the top right → « Importer un entraînement », pick the file in
    Download). If file import fails, note it, then try the paste import with this short JSON:
    `{"plans":[{"id":"p2","name":"Test court","steps":[{"id":"a","title":"Pompes","seconds":0,"type":0,"autoNext":false},{"id":"b","title":"Repos","seconds":10,"type":1,"autoNext":true}]}]}`
 3. Open the imported plan in the editor: add one step, change one duration, save.
