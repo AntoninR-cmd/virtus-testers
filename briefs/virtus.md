@@ -32,24 +32,22 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 - A file `programme_test.json` is in the phone's Download folder.
 
 ## Mission (in this order: newest features first)
-1. Sign in with « Continuer sans compte ». Glance at the home tab: is it clear what to do?
-2. Exercise library. Bottom bar « Séances » → open any plan in the editor → edit one step →
-   tap the dumbbell icon next to the title. Search « pompes »: are results relevant? Try one
-   equipment filter chip. Tap a result: the sheet shows muscles, a « Voir une vidéo » button
-   (do NOT tap it) and a source/licence line. Tap « Choisir cet exercice »: the step title
-   changes and a « Lié : … » chip appears. Save the step and the plan.
-3. Custom exercise. Edit another step → dumbbell icon → search a made-up word like « zorblax »:
-   is « Créer un exercice » offered? Create it (name only is enough), save: is it linked?
-4. Session tracking. Start a session on that plan. On the step linked to an exercise, are there
-   reps / weight inputs? Enter a value, go to the next step, then one more.
-5. Resume. Force-stop the app (`adb shell am force-stop <package>`), launch it again from the
-   launcher (never clear data), open « Séances »: is a « Séance en cours » card shown? Tap
-   « Reprendre »: does it continue at the right step? Then leave the session.
-6. Account page (top-right icon on the home tab) → « Crédits et licences »: readable? Back.
-7. « Séances » → ⋮ → « Générer avec une IA »: is the page clear? Copy the prompt, go back.
-8. ⋮ → paste import: tap « Insérer un exemple », import it. Is the summary clear?
-   Then paste an invalid JSON `{"plans":[{}]}` and import: is the error message clear?
-9. Count your plans: any duplicates or missing ones after the restart of step 5?
+1. Sign in with « Continuer sans compte » if the login screen shows. Glance at the home tab.
+2. Starter programs. « Séances » → ⋮ → « Programmes de départ »: is the list clear (duration,
+   equipment)? Add « Push » (or any weight-training one). Back: is it in your plans?
+3. Session tracking. Start that added plan. On an exercise step to validate (reps), are there
+   reps / weight inputs, pre-filled or empty? Enter reps and a weight (tap outside the field to
+   close the keyboard: is « Étape suivante » still visible?). Go to the next step, then one more.
+4. Resume. Force-stop the app (`adb shell am force-stop <package>`), launch it again from the
+   launcher (never clear data), open « Séances »: « Séance en cours » card? « Reprendre »: right
+   step? Then go to the last step and finish the session (validate until the end).
+5. History. ⋮ → « Historique »: is the finished session listed? Open it: are your sets shown?
+   Tab « Progression »: open the exercise: is a chart or « Pas encore assez de données » shown?
+6. Exercise library. Open a plan in the editor → edit a timer step → dumbbell icon → search
+   « pompes » → open a result → « Choisir cet exercice »: does the step switch to « Étape à
+   valider » with a short hint? Save.
+7. Custom exercise: in the picker, search « zorblax » → « Créer… » → save: is it linked?
+8. Count your plans: any duplicates or missing ones after the restart of step 4?
 
 ## Final report
 Write both files with the Write tool.
