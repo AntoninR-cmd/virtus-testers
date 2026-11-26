@@ -47,6 +47,9 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 8. Restart the app (`adb shell am force-stop <package>` then launch it again from the
    launcher; never clear data): are all your plans still there, with your changes, and
    no duplicates? Count them.
+9. Account page (top-right icon on the home tab): « Sauvegarder maintenant », then
+   « Restaurer maintenant ». Do both show a success message (no error)? Are the plans
+   still all there afterwards?
 
 ## Final report
 Write both files with the Write tool.
