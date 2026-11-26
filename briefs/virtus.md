@@ -44,6 +44,9 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 6. Export one plan (⋮ on the plan card → export): does the Android share sheet open?
    Press Back to close it.
 7. Start a session and go through at least three steps (wait out one timer with `sleep`).
+8. Restart the app (`adb shell am force-stop <package>` then launch it again from the
+   launcher; never clear data): are all your plans still there, with your changes, and
+   no duplicates? Count them.
 
 ## Final report
 Write both files with the Write tool.
