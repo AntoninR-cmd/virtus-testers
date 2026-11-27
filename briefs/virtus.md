@@ -37,15 +37,15 @@ Never press the Back key during a session (it asks to leave the workout).
 Shell commands: one plain `adb …` per call, no pipes or redirections outside the quotes
 (put filters inside `adb shell "…"`).
 1. Sign in with « Continuer sans compte » if the login screen shows.
-2. « Séances » → ⋮ → « Importer un entraînement » → pick `seance_courte.json` (3 steps).
+2. « Séances » → ⋮ → « Importer un entraînement » → pick `seance_courte.json` (4 steps).
 3. Start « Séance courte ». If Android asks to allow notifications, tap « Autoriser ».
    Step 1 « Pompes · 10 reps »: is the reps field pre-filled with 10? Tap « Étape suivante ».
-   Step 2: pre-filled with 8? Tap « Étape suivante ». Step 3 is a 15 s timer: right away run
-   `adb shell input keyevent KEYCODE_HOME`, then
-   `adb shell "dumpsys notification --noredact | grep -i -E 'pkg=com.antonin|android.title|android.text' | grep -i -A2 virtus"`
-   → is there an ongoing « Séance courte » notification? `sleep 20`, run it again: an « Étape
-   terminée » notification? Reopen Virtus by tapping its launcher icon: is the session
-   screen back (step 3 or the end of the session), not the Séances list? Finish the session.
+   Step 2: pre-filled with 8? Tap « Étape suivante ». Step 3 is a 30 s timer « Gainage »:
+   right away run `adb shell input keyevent KEYCODE_HOME`, then
+   `adb shell "dumpsys notification --noredact | grep -i -E 'android.title|android.text'"`
+   → is there an ongoing « Séance courte » notification? `sleep 35`, run it again: an « Étape
+   terminée » notification? Reopen Virtus by tapping its launcher icon: is the session screen
+   back at step 4 « Étirements » (not the Séances list)? Validate it to finish the session.
 4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets (10 and 8)?
    Tab « Progression » → « Pompes »: what is displayed?
 5. Press Back once while a new session is running: is a « Quitter la séance ? » dialog shown?
