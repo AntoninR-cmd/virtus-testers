@@ -29,22 +29,24 @@ moments in the WORKOUT features, and report them precisely and verifiably.
   down if needed). Do NOT create an account: the test addresses already have accounts
   from earlier runs. If that button fails, report it as a blocker with its message.
 - The ads are blocked on purpose: an empty ad space or an ad error is not a bug.
-- A file `programme_test.json` is in the phone's Download folder.
+- Files `programme_test.json` and `seance_courte.json` are in the phone's Download folder.
 
 ## Mission (in this order: newest features first)
 1. Sign in with « Continuer sans compte » if the login screen shows.
-2. Exercise library. « Séances » → ⋮ → paste import → « Insérer un exemple » → import. Open
-   that plan in the editor → edit a TIMER step → dumbbell icon → search « pompes » → open a
-   result → « Choisir cet exercice »: does the step switch to « Étape à valider » with a short
-   hint under the « Lié » chip? Save the step and the plan.
-3. Custom exercise: edit another step → dumbbell icon → search « zorblax » → « Créer… » →
-   save: is it linked? Open its sheet (i): « Modifier » and « Supprimer » shown, no licence line?
-4. Start a session on that plan, go to the step linked to « pompes »: reps / weight inputs?
-   Type reps, then a weight: both kept? Close the session with the « × ».
-5. Home tab: does the top card now say « Reprendre — … (étape X/Y) »? Do not tap it.
-6. « Séances » → ⋮ → « Historique »: clear empty state (no finished session yet)? Tap the
-   import icon in its app bar: is the Strong / Hevy help clear? Cancel (no file to pick).
-7. ⋮ → « Programmes de départ »: list readable? Back.
+2. « Séances » → ⋮ → « Importer un entraînement » → pick `seance_courte.json` (3 steps).
+3. Start « Séance courte ». Step 1 « Pompes · 10 reps »: type 10 reps, « Étape suivante ».
+   Step 2: type 8 reps, « Étape suivante ». Step 3 is a 15 s timer « Gainage »: right away
+   press Home (`adb shell input keyevent KEYCODE_HOME`), then open the notification shade
+   (`adb shell cmd statusbar expand-notifications`): is there a Virtus « séance en cours »
+   notification with a countdown? Wait 20 s (`sleep 20`), look again: is there an « Étape
+   terminée » notification? Collapse the shade (`adb shell cmd statusbar collapse`), reopen
+   Virtus from the launcher: is the ongoing notification gone? Finish the session.
+4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets? Open it: sets
+   « Pompes » 10 and 8 reps shown? Tab « Progression » → « Pompes »: what is displayed?
+5. Run « Séance courte » once more to the end (same values), then open « Progression » →
+   « Pompes » again: is there now a chart with 2 points?
+6. If budget remains: long-press an empty area of the launcher home screen → « Widgets » →
+   find Virtus: is it listed? Add it if easy: what text does it show?
 
 ## Final report
 Write both files with the Write tool.
