@@ -6,7 +6,7 @@ in the phone's language (French for most personas). Goal: find bugs, crashes and
 moments in the WORKOUT features, and report them precisely and verifiably.
 
 ## Token budget (strict)
-- Budget: about 35 actions, then write the report. Stop earlier if the app crashes twice,
+- Budget: about 50 actions, then write the report. Stop earlier if the app crashes twice,
   or after 3 different attempts on the same blocked step.
 - See the screen: `python3 scripts/android/screen.py results/<persona> <NN>` (NN = 01, 02...).
   It prints the list of visible elements with tap centres and saves a PNG.
@@ -34,13 +34,13 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 ## Mission (in this order: newest features first)
 1. Sign in with « Continuer sans compte » if the login screen shows.
 2. « Séances » → ⋮ → « Importer un entraînement » → pick `seance_courte.json` (3 steps).
-3. Start « Séance courte ». Step 1 « Pompes · 10 reps »: type 10 reps, « Étape suivante ».
+3. Start « Séance courte ». If Android asks to allow notifications, tap « Autoriser ». Step 1 « Pompes · 10 reps »: type 10 reps, « Étape suivante ».
    Step 2: type 8 reps, « Étape suivante ». Step 3 is a 15 s timer « Gainage »: right away
    press Home (`adb shell input keyevent KEYCODE_HOME`), then open the notification shade
    (`adb shell cmd statusbar expand-notifications`): is there a Virtus « séance en cours »
    notification with a countdown? Wait 20 s (`sleep 20`), look again: is there an « Étape
    terminée » notification? Collapse the shade (`adb shell cmd statusbar collapse`), reopen
-   Virtus from the launcher: is the ongoing notification gone? Finish the session.
+   Virtus from the launcher: is the ongoing notification gone? Is the session still open at step 3 (not lost)? Finish the session.
 4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets? Open it: sets
    « Pompes » 10 and 8 reps shown? Tab « Progression » → « Pompes »: what is displayed?
 5. Run « Séance courte » once more to the end (same values), then open « Progression » →
