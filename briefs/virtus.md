@@ -6,7 +6,7 @@ in the phone's language (French for most personas). Goal: find bugs, crashes and
 moments in the WORKOUT features, and report them precisely and verifiably.
 
 ## Token budget (strict)
-- Budget: about 50 actions, then write the report. Stop earlier if the app crashes twice,
+- Budget: about 55 actions, then write the report. Stop earlier if the app crashes twice,
   or after 3 different attempts on the same blocked step.
 - See the screen: `python3 scripts/android/screen.py results/<persona> <NN>` (NN = 01, 02...).
   It prints the list of visible elements with tap centres and saves a PNG.
@@ -32,25 +32,22 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 - Files `programme_test.json` and `seance_courte.json` are in the phone's Download folder.
 
 ## Mission (in this order: newest features first)
-Be efficient: use the element list, avoid re-reading screens.
-Never press the Back key during a session (it asks to leave the workout).
-Shell commands: one plain `adb …` per call, no pipes or redirections outside the quotes
-(put filters inside `adb shell "…"`).
-1. Sign in with « Continuer sans compte » if the login screen shows.
-2. « Séances » → ⋮ → « Importer un entraînement » → pick `seance_courte.json` (4 steps).
-3. Start « Séance courte ». If Android asks to allow notifications, tap « Autoriser ». If Virtus offers « Alarmes et rappels », tap « Plus tard ».
-   Step 1 « Pompes · 10 reps »: is the reps field pre-filled with 10? Tap « Étape suivante ».
-   Step 2: pre-filled with 8? Tap « Étape suivante ». Step 3 is a 30 s timer « Gainage »:
-   right away run `adb shell input keyevent KEYCODE_HOME`, then
-   `adb shell cmd notification list` (one line per active notification: `…|<package>|<id>|…`;
-   Virtus ids: 990002 = « séance en cours », 990004 or 990001 = « Étape terminée », 990003 = « Séance terminée »)
-   → is there an ongoing « Séance courte » notification? `sleep 35`, run it again (once, no loop): an « Étape
-   terminée » notification? Reopen Virtus by tapping its launcher icon: is the session screen
-   back at step 4 « Étirements » (not the Séances list)? Validate it to finish the session.
-4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets? Open it: 10 and 8?
-   Tab « Progression » → « Pompes »: which measure is selected first, and its value?
-5. Press Back once while a new session is running: is a « Quitter la séance ? » dialog shown?
-   Tap « Continuer ».
+Be efficient: use the element list, avoid re-reading screens. Never press Back during a session.
+1. First launch. Tap « Continuer sans compte ». A guided setup should appear: choose « Poids du
+   corps », equipment « Aucun », 3 sessions per week, then « Programme recommandé ». Is it clear?
+   Which programs are added? Do NOT start the session now (go back to the home screen).
+2. Home: is there a card « Cette semaine : 0/3 … »?
+3. « Séances » → ⋮ → « Importer un entraînement » → `seance_courte.json` (4 steps). Start it.
+   If dialogs ask for notifications / « Alarmes et rappels »: « Autoriser » / « Plus tard ».
+   Step 1 « Valider », step 2 « Valider », step 3 timer: `sleep 32`, step 4 « Valider ».
+   A summary screen should appear: duration, sets, records? Note what it shows. Tap « Terminer ».
+4. Start « Séance courte » again: at step 1 set reps to 12 (+ button twice), then go to the end
+   the same way. Does the summary show a « Nouveau record » for Pompes? « Terminer ».
+5. On the plan card ⋮ → « Afficher le QR code »: is a QR code shown with a hint? Back.
+6. « Séances » ⋮ → « Générer avec une IA »: are template chips shown (Débutant, Force, HIIT,
+   Coach)? Tap « HIIT »: does the form change? Back.
+7. Account page (top-right on home): is there a weekly goal setting and a « Politique de
+   confidentialité » entry? Do not open external links.
 
 ## Final report
 Write both files with the Write tool.
