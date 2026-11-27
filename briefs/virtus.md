@@ -32,21 +32,20 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 - Files `programme_test.json` and `seance_courte.json` are in the phone's Download folder.
 
 ## Mission (in this order: newest features first)
+Be efficient: use the element list, avoid re-reading screens. Do steps 2-4 first.
 1. Sign in with « Continuer sans compte » if the login screen shows.
 2. « Séances » → ⋮ → « Importer un entraînement » → pick `seance_courte.json` (3 steps).
-3. Start « Séance courte ». If Android asks to allow notifications, tap « Autoriser ». Step 1 « Pompes · 10 reps »: type 10 reps, « Étape suivante ».
-   Step 2: type 8 reps, « Étape suivante ». Step 3 is a 15 s timer « Gainage »: right away
-   press Home (`adb shell input keyevent KEYCODE_HOME`), then open the notification shade
-   (`adb shell cmd statusbar expand-notifications`): is there a Virtus « séance en cours »
-   notification with a countdown? Wait 20 s (`sleep 20`), look again: is there an « Étape
-   terminée » notification? Collapse the shade (`adb shell cmd statusbar collapse`), reopen
-   Virtus from the launcher: is the ongoing notification gone? Is the session still open at step 3 (not lost)? Finish the session.
-4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets? Open it: sets
-   « Pompes » 10 and 8 reps shown? Tab « Progression » → « Pompes »: what is displayed?
-5. Run « Séance courte » once more to the end (same values), then open « Progression » →
-   « Pompes » again: is there now a chart with 2 points?
-6. If budget remains: long-press an empty area of the launcher home screen → « Widgets » →
-   find Virtus: is it listed? Add it if easy: what text does it show?
+3. Start « Séance courte ». If Android asks to allow notifications, tap « Autoriser ».
+   Steps 1 and 2: keep the pre-filled reps, tap « Étape suivante ». Step 3 is a 15 s timer:
+   right away press Home (`adb shell input keyevent KEYCODE_HOME`), then
+   `adb shell dumpsys notification --noredact | grep -i -A3 virtus` : is there an ongoing
+   « Séance courte » notification? `sleep 20`, run the same command: an « Étape terminée »
+   notification? Then reopen Virtus from the launcher: is the session screen back at step 3
+   (not the Séances list)? Finish the session.
+4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets? Open it.
+   Tab « Progression » → « Pompes »: what is displayed?
+5. If budget remains: run « Séance courte » again to the end, then « Progression » →
+   « Pompes »: a chart with 2 points?
 
 ## Final report
 Write both files with the Write tool.
