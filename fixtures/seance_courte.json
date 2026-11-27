@@ -1,0 +1,14 @@
+{
+  "schema": "virtus.program",
+  "schemaVersion": 1,
+  "plans": [
+    {
+      "id": "test_courte",
+      "name": "Séance courte",
+      "blocks": [
+        { "type": "exercise", "exerciseId": "wger:1551", "exerciseName": "Pompes", "sets": [{ "reps": "10" }, { "reps": "8" }] },
+        { "type": "timer", "title": "Gainage", "seconds": 15 }
+      ]
+    }
+  ]
+}
