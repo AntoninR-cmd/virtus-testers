@@ -42,12 +42,13 @@ Shell commands: one plain `adb …` per call, no pipes or redirections outside t
    Step 1 « Pompes · 10 reps »: is the reps field pre-filled with 10? Tap « Étape suivante ».
    Step 2: pre-filled with 8? Tap « Étape suivante ». Step 3 is a 30 s timer « Gainage »:
    right away run `adb shell input keyevent KEYCODE_HOME`, then
-   `adb shell "dumpsys notification --noredact | grep -i -E 'android.title|android.text'"`
+   `adb shell cmd notification list` (one line per active notification: `…|<package>|<id>|…`;
+   Virtus ids: 990002 = « séance en cours », 990001 = « Étape terminée », 990003 = « Séance terminée »)
    → is there an ongoing « Séance courte » notification? `sleep 35`, run it again: an « Étape
    terminée » notification? Reopen Virtus by tapping its launcher icon: is the session screen
    back at step 4 « Étirements » (not the Séances list)? Validate it to finish the session.
-4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets (10 and 8)?
-   Tab « Progression » → « Pompes »: what is displayed?
+4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets? Open it: 10 and 8?
+   Tab « Progression » → « Pompes »: which measure is selected first, and its value?
 5. Press Back once while a new session is running: is a « Quitter la séance ? » dialog shown?
    Tap « Continuer ».
 
