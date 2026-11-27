@@ -32,20 +32,24 @@ moments in the WORKOUT features, and report them precisely and verifiably.
 - Files `programme_test.json` and `seance_courte.json` are in the phone's Download folder.
 
 ## Mission (in this order: newest features first)
-Be efficient: use the element list, avoid re-reading screens. Do steps 2-4 first.
+Be efficient: use the element list, avoid re-reading screens.
+Never press the Back key during a session (it asks to leave the workout).
+Shell commands: one plain `adb …` per call, no pipes or redirections outside the quotes
+(put filters inside `adb shell "…"`).
 1. Sign in with « Continuer sans compte » if the login screen shows.
 2. « Séances » → ⋮ → « Importer un entraînement » → pick `seance_courte.json` (3 steps).
 3. Start « Séance courte ». If Android asks to allow notifications, tap « Autoriser ».
-   Steps 1 and 2: keep the pre-filled reps, tap « Étape suivante ». Step 3 is a 15 s timer:
-   right away press Home (`adb shell input keyevent KEYCODE_HOME`), then
-   `adb shell dumpsys notification --noredact | grep -i -A3 virtus` : is there an ongoing
-   « Séance courte » notification? `sleep 20`, run the same command: an « Étape terminée »
-   notification? Then reopen Virtus from the launcher: is the session screen back at step 3
-   (not the Séances list)? Finish the session.
-4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets? Open it.
+   Step 1 « Pompes · 10 reps »: is the reps field pre-filled with 10? Tap « Étape suivante ».
+   Step 2: pre-filled with 8? Tap « Étape suivante ». Step 3 is a 15 s timer: right away run
+   `adb shell input keyevent KEYCODE_HOME`, then
+   `adb shell "dumpsys notification --noredact | grep -i -E 'pkg=com.antonin|android.title|android.text' | grep -i -A2 virtus"`
+   → is there an ongoing « Séance courte » notification? `sleep 20`, run it again: an « Étape
+   terminée » notification? Reopen Virtus by tapping its launcher icon: is the session
+   screen back (step 3 or the end of the session), not the Séances list? Finish the session.
+4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets (10 and 8)?
    Tab « Progression » → « Pompes »: what is displayed?
-5. If budget remains: run « Séance courte » again to the end, then « Progression » →
-   « Pompes »: a chart with 2 points?
+5. Press Back once while a new session is running: is a « Quitter la séance ? » dialog shown?
+   Tap « Continuer ».
 
 ## Final report
 Write both files with the Write tool.
