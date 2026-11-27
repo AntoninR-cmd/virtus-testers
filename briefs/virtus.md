@@ -38,13 +38,13 @@ Shell commands: one plain `adb …` per call, no pipes or redirections outside t
 (put filters inside `adb shell "…"`).
 1. Sign in with « Continuer sans compte » if the login screen shows.
 2. « Séances » → ⋮ → « Importer un entraînement » → pick `seance_courte.json` (4 steps).
-3. Start « Séance courte ». If Android asks to allow notifications, tap « Autoriser ».
+3. Start « Séance courte ». If Android asks to allow notifications, tap « Autoriser ». If Virtus offers « Alarmes et rappels », tap « Plus tard ».
    Step 1 « Pompes · 10 reps »: is the reps field pre-filled with 10? Tap « Étape suivante ».
    Step 2: pre-filled with 8? Tap « Étape suivante ». Step 3 is a 30 s timer « Gainage »:
    right away run `adb shell input keyevent KEYCODE_HOME`, then
    `adb shell cmd notification list` (one line per active notification: `…|<package>|<id>|…`;
-   Virtus ids: 990002 = « séance en cours », 990001 = « Étape terminée », 990003 = « Séance terminée »)
-   → is there an ongoing « Séance courte » notification? `sleep 35`, run it again: an « Étape
+   Virtus ids: 990002 = « séance en cours », 990004 or 990001 = « Étape terminée », 990003 = « Séance terminée »)
+   → is there an ongoing « Séance courte » notification? `sleep 35`, run it again (once, no loop): an « Étape
    terminée » notification? Reopen Virtus by tapping its launcher icon: is the session screen
    back at step 4 « Étirements » (not the Séances list)? Validate it to finish the session.
 4. « Séances » → ⋮ → « Historique »: is « Séance courte » listed with 2 sets? Open it: 10 and 8?
